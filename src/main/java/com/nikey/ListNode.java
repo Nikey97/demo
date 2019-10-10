@@ -26,6 +26,8 @@ class Solution {
         ListNode nodeNext4 = new ListNode(4);
         nodeNext3.next = nodeNext4;
 
+
+
         Solution solution = new Solution();
         ListNode listNode = solution.addTwoNumbers(node1,node2);
 
