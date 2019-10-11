@@ -39,8 +39,13 @@ class Solution {
         ListNode head = null;
         for (int i = 0; i < added.length(); i++) {
             ListNode node = this.getInstance(Integer.parseInt(added.charAt((added.length()-i)-1)+""));
-            if (i > 1){
-                head.next = node;
+            if (i >= 1){
+                if (i == 1){
+                    head.next = node;
+                    pre = node;
+                }else{
+                    pre.next = node;
+                }
             }else{
                 head = node;
             }
