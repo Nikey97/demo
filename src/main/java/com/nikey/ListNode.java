@@ -22,16 +22,30 @@ class Solution {
         return Integer.parseInt(buffer.reverse().toString());
     }
 
+    private ListNode getInstance(int val){
+        return new ListNode(val);
+    }
+
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         int node1 = this.getListNodeByStr(l1);
         int node2 = this.getListNodeByStr(l2);
         String added = (node1 + node2)+"";
-        ListNode node = new ListNode(Integer.parseInt(added.charAt(added.length()-1)+""));
-        ListNode nodeNext1 = new ListNode(Integer.parseInt(added.charAt(added.length()-2)+""));
-        node.next = nodeNext1;
-        ListNode nodeNext2 = new ListNode(Integer.parseInt(added.charAt(added.length()-3)+""));
-        nodeNext1.next = nodeNext2;
-        return node;
+//        ListNode node = new ListNode(Integer.parseInt(added.charAt(added.length()-1)+""));
+//        ListNode nodeNext1 = new ListNode(Integer.parseInt(added.charAt(added.length()-2)+""));
+//        node.next = nodeNext1;
+//        ListNode nodeNext2 = new ListNode(Integer.parseInt(added.charAt(added.length()-3)+""));
+//        nodeNext1.next = nodeNext2;
+        ListNode pre = null;
+        ListNode head = null;
+        for (int i = 0; i < added.length(); i++) {
+            ListNode node = this.getInstance(Integer.parseInt(added.charAt((added.length()-i)-1)+""));
+            if (i > 1){
+                head.next = node;
+            }else{
+                head = node;
+            }
+        }
+        return head;
     }
 
     public static void main(String[] args) {
