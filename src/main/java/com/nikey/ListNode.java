@@ -7,7 +7,7 @@ public class ListNode {
 }
 class Solution {
 
-    private int getListNodeByStr(ListNode node){
+    private long getListNodeByStr(ListNode node){
         ListNode n = node;
         StringBuffer buffer = new StringBuffer();
         while (1==1){
@@ -19,7 +19,7 @@ class Solution {
                 break;
             }
         }
-        return Integer.parseInt(buffer.reverse().toString());
+        return Long.parseLong(buffer.reverse().toString());
     }
 
     private ListNode getInstance(int val){
@@ -27,14 +27,9 @@ class Solution {
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        int node1 = this.getListNodeByStr(l1);
-        int node2 = this.getListNodeByStr(l2);
+        long node1 = this.getListNodeByStr(l1);
+        long node2 = this.getListNodeByStr(l2);
         String added = (node1 + node2)+"";
-//        ListNode node = new ListNode(Integer.parseInt(added.charAt(added.length()-1)+""));
-//        ListNode nodeNext1 = new ListNode(Integer.parseInt(added.charAt(added.length()-2)+""));
-//        node.next = nodeNext1;
-//        ListNode nodeNext2 = new ListNode(Integer.parseInt(added.charAt(added.length()-3)+""));
-//        nodeNext1.next = nodeNext2;
         ListNode pre = null;
         ListNode head = null;
         for (int i = 0; i < added.length(); i++) {
@@ -45,6 +40,7 @@ class Solution {
                     pre = node;
                 }else{
                     pre.next = node;
+                    pre = node;
                 }
             }else{
                 head = node;
@@ -54,16 +50,16 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        ListNode node1 = new ListNode(2);
-//        ListNode nodeNext1 = new ListNode(4);
-////        node1.next = nodeNext1;
-//        ListNode nodeNext2 = new ListNode(3);
-//        nodeNext1.next = nodeNext2;
-        ListNode node2 = new ListNode(5);
-//        ListNode nodeNext3 = new ListNode(6);
-//        node2.next = nodeNext3;
-//        ListNode nodeNext4 = new ListNode(4);
-////        nodeNext3.next = nodeNext4;
+        ListNode node1 = new ListNode(9);
+        ListNode nodeNext1 = new ListNode(4);
+        node1.next = nodeNext1;
+        ListNode nodeNext2 = new ListNode(3);
+        nodeNext1.next = nodeNext2;
+        ListNode node2 = new ListNode(1);
+        ListNode nodeNext3 = new ListNode(9);
+        node2.next = nodeNext3;
+        ListNode nodeNext4 = new ListNode(9);
+        nodeNext3.next = nodeNext4;
 
         Solution solution = new Solution();
         ListNode listNode = solution.addTwoNumbers(node1,node2);
